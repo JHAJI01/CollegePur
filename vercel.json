@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "cd Internship && npm run build",
-  "outputDirectory": "Internship/dist",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "framework": "vite",
   "cleanUrls": true,
   "trailingSlash": false,
