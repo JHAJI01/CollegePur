@@ -13,46 +13,75 @@
       "main": true
     }
   },
-  "routes": [
+  "headers": [
     {
-      "src": "/assets/(.*)",
-      "headers": {
-        "cache-control": "public, max-age=31536000, immutable",
-        "accept-ranges": "bytes"
-      },
-      "continue": true
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "cache-control",
+          "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "accept-ranges",
+          "value": "bytes"
+        }
+      ]
     },
     {
-      "src": "/(.*)\\.(js|css|json|txt|html|ico|svg)$",
-      "headers": {
-        "cache-control": "public, max-age=31536000, immutable",
-        "accept-ranges": "bytes"
-      },
-      "continue": true
+      "source": "/(.*)\\.(js|css|json|txt|html|ico|svg)$",
+      "headers": [
+        {
+          "key": "cache-control",
+          "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "accept-ranges",
+          "value": "bytes"
+        }
+      ]
     },
     {
-      "src": "/(.*)",
-      "headers": {
-        "cache-control": "public, max-age=0, must-revalidate",
-        "x-content-type-options": "nosniff",
-        "x-frame-options": "DENY",
-        "x-xss-protection": "1; mode=block",
-        "referrer-policy": "strict-origin-when-cross-origin",
-        "permissions-policy": "camera=(), microphone=(), geolocation=()",
-        "strict-transport-security": "max-age=31536000; includeSubDomains"
-      },
-      "continue": true
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "cache-control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "x-content-type-options",
+          "value": "nosniff"
+        },
+        {
+          "key": "x-frame-options",
+          "value": "DENY"
+        },
+        {
+          "key": "x-xss-protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "referrer-policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "permissions-policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "strict-transport-security",
+          "value": "max-age=31536000; includeSubDomains"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
     },
     {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 } 
